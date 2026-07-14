@@ -33,4 +33,3 @@ A full-stack Hospital Management System developed using Angular, Node.js, and SQ
 - SQLite Database
 
 
-https://sarahmagdy7.github.io/graduation-project-hospital-
