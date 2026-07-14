@@ -1,0 +1,40 @@
+.panel-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f7f6;
+
+  .sidebar {
+    width: 250px;
+    background-color: #2d3748;
+    color: white;
+    padding: 20px;
+    
+    h2 { font-size: 1.2rem; margin-bottom: 30px; text-align: center; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 15px;
+        cursor: pointer;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        transition: 0.3s;
+        
+        &:hover, &.active {
+          background-color: #a275bd; // نفس لون البنفسجي بتاعك
+        }
+      }
+    }
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: #ffffff;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+}

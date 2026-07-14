@@ -1,0 +1,31 @@
+$purple-main: #a275bd;
+$purple-hover: #8e5ca9;
+
+.btn-outline-purple {
+  border-color: $purple-main;
+  color: $purple-main;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: $purple-main;
+    color: white;
+  }
+}
+
+.form-control:focus {
+  border-color: $purple-main;
+  box-shadow: 0 0 0 0.25rem rgba($purple-main, 0.15);
+}
+
+.table {
+  th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 15px 10px;
+    color: #495057;
+  }
+}

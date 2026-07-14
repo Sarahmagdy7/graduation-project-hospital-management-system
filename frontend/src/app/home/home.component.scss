@@ -1,0 +1,265 @@
+$primary-color: #9b59b6; // اللون البنفسجي الجميل من الفيجما
+$secondary-bg: #eef5fc;
+$text-dark: #333;
+$text-light: #777;
+
+.home-container {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: $text-dark;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+// Navbar Styling
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: transparent;
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    i { color: $primary-color; }
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s;
+      &:hover, &.active { color: $primary-color; }
+    }
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 15px;
+    button {
+      padding: 10px 24px;
+      border-radius: 20px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-signin { background: transparent; color: #555; border: 1px solid #ccc; &:hover { background: #eee; } }
+    .btn-register { background: $primary-color; color: white; &:hover { background: darken($primary-color, 10%); } }
+  }
+}
+
+// Hero Section
+.hero-section {
+  display: flex;
+  align-items: center;
+  padding: 60px 8%;
+  background: radial-gradient(circle at right, #eef5fc 40%, transparent 60%);
+  min-height: 80vh;
+
+  .hero-content {
+    flex: 1;
+    h1 { font-size: 48px; line-height: 1.2; margin-bottom: 20px; color: #1a252f; }
+    p { color: $text-light; font-size: 16px; margin-bottom: 30px; max-width: 500px; }
+    .btn-tour { background: $primary-color; color: white; padding: 12px 35px; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; }
+  }
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    img { max-width: 100%; height: auto; }
+  }
+}
+
+// About Us Section
+.about-section {
+  display: flex;
+  align-items: center;
+  padding: 80px 8%;
+  gap: 50px;
+  
+  .about-image { flex: 1; img { width: 100%; border-radius: 15px; } }
+  .about-content {
+    flex: 1;
+    .subtitle { color: $text-light; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; }
+    h2 { font-size: 36px; margin: 10px 0 20px; }
+    p { color: $text-light; line-height: 1.6; margin-bottom: 15px; }
+    .highlight-text { font-style: italic; font-weight: 500; color: #444; border-left: 3px solid $primary-color; padding-left: 15px; }
+    .btn-see-more { background: $primary-color; color: white; padding: 10px 25px; border: none; border-radius: 20px; cursor: pointer; margin-top: 15px; }
+  }
+}
+
+// Services Section
+.services-section {
+  padding: 60px 8%;
+  text-align: center;
+  .section-title { font-size: 32px; margin-bottom: 40px; }
+  
+  .services-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    
+    .service-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      width: 300px;
+      transition: transform 0.3s;
+      &:hover { transform: translateY(-5px); }
+      .card-image img { width: 100%; height: 200px; object-fit: cover; }
+      h3 { font-size: 16px; padding: 20px; letter-spacing: 1px; color: #333; }
+    }
+  }
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+    .dot { width: 10px; height: 10px; background: #ccc; border-radius: 50%; cursor: pointer; &.active { background: $primary-color; width: 12px; height: 12px; } }
+  }
+}
+
+// Doctors Section
+.doctors-section {
+  padding: 60px 8%;
+  text-align: center;
+  background-color: #fafbfc;
+  .section-title { font-size: 32px; margin-bottom: 40px; }
+
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    justify-content: center;
+    gap: 40px 60px;
+
+    .doctor-avatar-card {
+      text-align: center;
+      .avatar-holder {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: $secondary-bg;
+        margin: 0 auto 10px;
+        overflow: hidden;
+        border: 3px solid white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        img { width: 100%; height: 100%; object-fit: cover; }
+      }
+      .doc-info { h4 { font-size: 14px; margin-bottom: 2px; } p { font-size: 11px; color: $text-light; } }
+    }
+  }
+}
+
+// Contact Us Form Section
+.contact-section {
+  padding: 80px 8%;
+  text-align: center;
+  background: radial-gradient(circle at left bottom, #eef5fc 25%, transparent 40%);
+  .section-title { font-size: 32px; margin-bottom: 40px; }
+
+  .contact-form {
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    .form-row {
+      display: flex;
+      gap: 20px;
+      input, textarea {
+        flex: 1;
+        padding: 15px 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        outline: none;
+        &:focus { border-color: $primary-color; }
+      }
+      &.full-width { width: 100%; }
+    }
+    .btn-send { background: $primary-color; color: white; padding: 12px 50px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; align-self: center; margin-top: 10px; }
+  }
+}
+
+// Footer Styling
+.footer {
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  padding: 60px 8% 30px;
+  
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-col {
+    flex: 1;
+    min-width: 180px;
+    h4 { font-size: 16px; margin-bottom: 20px; color: #333; position: relative; }
+    ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; a { text-decoration: none; color: $text-light; &:hover { color: $primary-color; } } }
+    p { font-size: 14px; color: $text-light; margin-bottom: 10px; display: flex; justify-content: space-between; span { color: #333; font-weight: 500; } }
+  }
+
+}
+.footer {
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  padding: 60px 8% 30px;
+  
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  // 🚨 التعديل السحري للوجو الفوتر هنا
+  .footer-col.brand {
+    .footer-logo-container {
+      display: flex;
+      align-items: center;  // يخلي الصورة والكلام على نفس الخط الأفقي
+      gap: 10px;            // مسافة شياكة بين اللوجو والاسم
+      
+      h3 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin: 0;          // يشيل أي مسافات افتراضية تبوظ المحاذاة
+      }
+
+      img {
+        height: 35px;       // 👈 حجم أصغر ومناسب جداً للفوتر تحت
+        width: auto;        // يحافظ على أبعاد اللوجو من غير ما يتمط
+        object-fit: contain;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+.logo {
+  display: flex;
+  align-items: center;  // يخلي اللوجو والكلام على خط أفقي واحد بالظبط
+  gap: 10px;            // مسافة شياكة بين اللوجو ونص اسم المستشفى
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+
+  img {
+    height: 40px;       // 👈 الحجم المثالي للوجو في الـ Navbar
+    width: auto;        // يحافظ على أبعاد الصورة من غير ما تـتمط
+    object-fit: contain;
+    border-radius: 4px; // لمسة بسيطة لو حابة حواف اللوجو ناعمة
+  }
+}

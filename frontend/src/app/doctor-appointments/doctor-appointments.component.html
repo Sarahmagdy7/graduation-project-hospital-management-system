@@ -1,0 +1,100 @@
+<div class="container-fluid py-3">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="m-0 fw-bold text-secondary"><i class="fas fa-calendar-check me-2"></i>Today's Appointments</h4>
+    <span class="badge px-3 py-2 fs-6 shadow-sm text-white" style="background-color: #a275bd;">
+      Total: {{ appointmentsList.length }} Patients
+    </span>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-3">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-center">
+          <thead class="table-light text-muted small text-uppercase">
+            <tr>
+              <th class="py-3">Patient Name</th>
+              <th class="py-3">Age</th>
+              <th class="py-3">Gender</th>
+              <th class="py-3">Time Slot</th>
+              <th class="py-3">Status</th>
+              <th class="py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let app of appointmentsList">
+              <td class="fw-semibold">{{ app.patientName }}</td>
+              <td>{{ app.age }} Yrs</td>
+              <td>{{ app.gender }}</td>
+              <td><span class="badge bg-light text-dark border px-2 py-1">{{ app.timeSlot }}</span></td>
+              <td>
+                <span class="badge px-2 py-1" 
+                      [ngClass]="{
+                        'bg-success-subtle text-success': app.status === 'Confirmed',
+                        'bg-warning-subtle text-warning': app.status === 'Pending',
+                        'bg-danger-subtle text-danger': app.status === 'Canceled'
+                      }">
+                  {{ app.status }}
+                </span>
+              </td>
+              <td>
+                <button *ngIf="app.status !== 'Canceled'" 
+                        class="btn btn-sm text-white shadow-sm" 
+                        style="background-color: #a275bd;"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#prescriptionModal"
+                        (click)="openPrescriptionModal(app)">
+                  <i class="fas fa-pen-nib me-1"></i> {{ app.prescription ? 'Edit Prescription' : 'Write Prescription' }}
+                </button>
+                
+                <button *ngIf="app.status === 'Canceled'" class="btn btn-sm btn-secondary disabled" disabled>
+                  <i class="fas fa-ban me-1"></i> Not Available
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="appointmentsList.length === 0">
+              <td colspan="6" class="text-muted py-4 fw-medium">No appointments scheduled for today.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="prescriptionModal" tabindex="-1" aria-labelledby="prescriptionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header text-white" style="background-color: #a275bd;">
+        <h5 class="modal-title fw-bold" id="prescriptionModalLabel">
+          <i class="fas fa-file-medical me-2"></i>Medical Prescription Portal
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id="closeModalBtn"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div *ngIf="selectedPatient" class="alert bg-light border-0 mb-4 py-2">
+          <div class="row text-secondary small">
+            <div class="col-md-4"><strong>Patient:</strong> {{ selectedPatient.patientName }}</div>
+            <div class="col-md-4"><strong>Age/Gender:</strong> {{ selectedPatient.age }} Yrs / {{ selectedPatient.gender }}</div>
+            <div class="col-md-4"><strong>Time Slot:</strong> {{ selectedPatient.timeSlot }}</div>
+          </div>
+        </div>
+        
+        <form (ngSubmit)="savePrescription()">
+          <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Rx / Treatment Plan Description</label>
+            <textarea class="form-control" [(ngModel)]="prescriptionText" name="prescription" rows="8" required 
+                      placeholder="e.g. &#10;1. Panadol Extra 500mg - Every 8 Hours (After meals)&#10;2. Amoxicillin 500mg - 1 Capsule twice daily for 5 days."></textarea>
+          </div>
+          <div class="text-end mt-4">
+            <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn text-white px-4" style="background-color: #a275bd;">
+              <i class="fas fa-save me-1"></i> Save & Issue Rx
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

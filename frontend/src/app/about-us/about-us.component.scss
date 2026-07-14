@@ -1,0 +1,193 @@
+$primary-pastel: #a275bd;       
+$primary-hover: #8e5ca9;        
+$text-main: #2c3e50;            
+$text-muted: #7f8c8d;           
+$border-color: #e2e8f0;          
+
+.about-us-container {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: $text-main;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+// Navbar Responsive Styling
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  @media (max-width: 992px) { padding: 20px 4%; }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    img { height: 40px; width: auto; object-fit: contain; }
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    @media (max-width: 768px) { display: none; } 
+    
+    a {
+      text-decoration: none;
+      color: $text-muted;
+      font-weight: 500;
+      &.active, &:hover { color: $primary-pastel; }
+    }
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 12px;
+    button { padding: 9px 20px; border-radius: 20px; border: none; font-weight: 600; cursor: pointer; }
+    .btn-signin { background: transparent; color: $text-main; border: 1px solid $border-color; }
+    .btn-register { background: $primary-pastel; color: white; }
+  }
+}
+
+// Hero Section Responsive
+.hero-section {
+  display: flex;
+  align-items: center;
+  padding: 40px 8%;
+  background: radial-gradient(circle at right, #eef5fc 40%, transparent 60%);
+  @media (max-width: 992px) { flex-direction: column; text-align: center; padding: 30px 4%; }
+
+  .hero-content {
+    flex: 1;
+    h1 { 
+      font-size: 44px; 
+      line-height: 1.2; 
+      margin-bottom: 15px; 
+      color: #1a252f; 
+      @media (max-width: 576px) { font-size: 30px; }
+    }
+    p { color: $text-muted; font-size: 16px; max-width: 550px; line-height: 1.6; }
+  }
+  
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    @media (max-width: 992px) { margin-top: 30px; width: 85%; }
+    img { max-width: 100%; height: auto; }
+  }
+}
+
+// Biography Section Layout & Responsiveness
+.biography-section {
+  padding: 80px 8%;
+  background-color: #ffffff;
+  @media (max-width: 992px) { padding: 50px 4%; }
+
+  .biography-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    @media (max-width: 992px) { flex-direction: column; align-items: center; gap: 40px; }
+  }
+
+  .biography-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 45%;
+    @media (max-width: 992px) { max-width: 80%; }
+    
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .biography-content {
+    flex: 1.2;
+    text-align: left;
+
+    .subtitle {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: $primary-pastel;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 38px;
+      font-weight: 700;
+      color: #1a252f;
+      margin-bottom: 25px;
+      @media (max-width: 576px) { font-size: 28px; }
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    .highlight-text {
+      font-style: italic;
+      border-left: 3px solid $primary-pastel;
+      padding-left: 15px;
+      color: #34495e;
+      font-weight: 500;
+    }
+
+    .accent-text {
+      color: #2c3e50;
+      margin-bottom: 5px;
+      
+      &.font-bold {
+        font-weight: bold;
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
+
+// Footer Responsive Styling
+.footer {
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  padding: 60px 8% 30px;
+  @media (max-width: 992px) { padding: 40px 4%; }
+  
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    @media (max-width: 576px) { flex-direction: column; gap: 30px; }
+  }
+
+  .footer-col {
+    flex: 1;
+    min-width: 200px;
+    h4 { font-size: 16px; margin-bottom: 20px; color: #333; }
+    ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; a { text-decoration: none; color: $text-muted; &:hover { color: $primary-pastel; } } }
+    p { font-size: 14px; color: $text-muted; margin-bottom: 10px; display: flex; justify-content: space-between; span { color: #333; font-weight: 500; } }
+    .footer-link { display: flex; align-items: center; gap: 8px; text-decoration: none; color: $text-muted; font-size: 14px; margin-bottom: 12px; i { color: $primary-pastel; } &:hover { color: $primary-pastel; } }
+  }
+
+  .footer-col.brand {
+    .footer-logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      h3 { font-size: 20px; font-weight: bold; color: #2c3e50; margin: 0; }
+      img { height: 35px; width: auto; object-fit: contain; }
+    }
+  }
+}

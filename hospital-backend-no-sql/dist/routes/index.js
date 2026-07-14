@@ -1,0 +1,27 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = __importDefault(require("./auth"));
+const patients_1 = __importDefault(require("./patients"));
+const appointments_1 = __importDefault(require("./appointments"));
+const staff_1 = __importDefault(require("./staff"));
+const medicines_1 = __importDefault(require("./medicines"));
+const lab_1 = __importDefault(require("./lab"));
+const invoices_1 = __importDefault(require("./invoices"));
+const doctors_1 = __importDefault(require("./doctors"));
+const dashboard_1 = __importDefault(require("./dashboard"));
+const router = (0, express_1.Router)();
+router.get("/healthz", (_req, res) => res.json({ status: "ok" }));
+router.use(auth_1.default);
+router.use(patients_1.default);
+router.use(appointments_1.default);
+router.use(staff_1.default);
+router.use(medicines_1.default);
+router.use(lab_1.default);
+router.use(invoices_1.default);
+router.use(doctors_1.default);
+router.use(dashboard_1.default);
+exports.default = router;

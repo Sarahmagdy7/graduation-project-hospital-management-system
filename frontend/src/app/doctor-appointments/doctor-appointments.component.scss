@@ -1,0 +1,32 @@
+$purple-main: #a275bd;
+$purple-hover: #8e5ca9;
+
+.bg-purple {
+  background-color: $purple-main;
+}
+
+.btn-purple {
+  background-color: $purple-main;
+  color: white;
+  border-radius: 6px;
+  font-weight: 500;
+  border: none;
+  padding: 6px 14px;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: $purple-hover;
+    color: white;
+  }
+}
+
+.table {
+  th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 15px 10px;
+    color: #495057;
+  }
+}

@@ -1,0 +1,101 @@
+<div class="container-fluid py-3">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="m-0 fw-bold text-secondary"><i class="fas fa-user-md me-2"></i>Doctors Directory</h4>
+    <button class="btn btn-purple shadow-sm text-white" data-bs-toggle="modal" data-bs-target="#doctorModal" (click)="openAddModal()" style="background-color: #a275bd;">
+      <i class="fas fa-plus me-2"></i>Add New Doctor
+    </button>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-3">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-center">
+          <thead class="table-light text-muted small text-uppercase">
+            <tr>
+              <th class="py-3">Photo</th>
+              <th class="py-3">Doctor Name</th>
+              <th class="py-3">Department</th>
+              <th class="py-3">Email</th>
+              <th class="py-3">Phone</th>
+              <th class="py-3">Status</th>
+              <th class="py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let doc of doctorsList">
+              <td>
+                <img [src]="doc.photo" alt="Doctor Profile" class="rounded-circle" width="40" height="40" style="object-fit: cover;">
+              </td>
+              <td class="fw-semibold">{{ doc.name }}</td>
+              <td>
+                <span class="badge rounded-pill px-3 py-2" style="color: #a275bd; background-color: rgba(162, 117, 189, 0.1);">
+                  {{ doc.dept }}
+                </span>
+              </td>
+              <td>{{ doc.email }}</td>
+              <td>{{ doc.phone }}</td>
+              <td><span class="badge bg-success-subtle text-success px-2 py-1">{{ doc.status }}</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#doctorModal" (click)="openEditModal(doc)">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-danger" (click)="deleteDoctor(doc.id)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="doctorsList.length === 0">
+              <td colspan="7" class="text-muted py-4 fw-medium">No doctors found in the directory database!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="doctorModal" tabindex="-1" aria-labelledby="doctorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header text-white" style="background-color: #a275bd;">
+        <h5 class="modal-title fw-bold" id="doctorModalLabel">
+          <i class="fas fa-user-md me-2"></i>{{ isEditMode ? 'Edit Doctor Profile' : 'Add New Doctor' }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id="closeModalBtn"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form (ngSubmit)="saveDoctor()">
+          <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Doctor Name</label>
+            <input type="text" class="form-control" [(ngModel)]="newDoctor.name" name="name" required placeholder="Enter doctor full name">
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Department</label>
+            <select class="form-select" [(ngModel)]="newDoctor.dept" name="dept">
+              <option value="Cardiology">Cardiology</option>
+              <option value="Pediatrics">Pediatrics</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Dermatology">Dermatology</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Email Address</label>
+            <input type="email" class="form-control" [(ngModel)]="newDoctor.email" name="email" required placeholder="name@medilab.com">
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Phone Number</label>
+            <input type="text" class="form-control" [(ngModel)]="newDoctor.phone" name="phone" placeholder="Enter phone number">
+          </div>
+          <div class="text-end mt-4">
+            <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn text-white px-4" style="background-color: #a275bd;">
+              {{ isEditMode ? 'Update Changes' : 'Save Doctor' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="container-fluid py-3">
+
+  <div class="row align-items-center mb-4 g-3">
+    <div class="col-12 col-md-6">
+      <h4 class="m-0 fw-bold text-secondary"><i class="fas fa-notes-medical me-2"></i>Patients Medical History</h4>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="input-group shadow-sm rounded-3">
+        <span class="input-group-text bg-white border-end-0 text-muted"><i class="fas fa-search"></i></span>
+        <input type="text" class="form-control border-start-0" placeholder="Search by Patient Name or ID..." [(ngModel)]="searchQuery">
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-3">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-center">
+          <thead class="table-light text-muted small text-uppercase">
+            <tr>
+              <th class="py-3">Patient ID</th>
+              <th class="py-3">Patient Name</th>
+              <th class="py-3">Last Visit</th>
+              <th class="py-3">Diagnosis</th>
+              <th class="py-3">Blood Group</th>
+              <th class="py-3">Medical Report</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let patient of filteredPatients">
+              <td class="fw-bold text-secondary">{{ patient.id }}</td>
+              <td class="fw-semibold">{{ patient.name }}</td>
+              <td>{{ patient.lastVisit }}</td>
+              <td>{{ patient.diagnosis }}</td>
+              <td><span class="badge bg-danger px-2 py-1.5 fs-7 rounded">{{ patient.bloodGroup }}</span></td>
+              <td>
+                <button class="btn btn-sm btn-outline-purple" data-bs-toggle="modal" data-bs-target="#folderModal" (click)="viewPatientFolder(patient)">
+                  <i class="fas fa-file-alt me-1"></i> View Folder
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="filteredPatients.length === 0">
+              <td colspan="6" class="text-muted py-4 fw-medium">No medical history matches found for your search criteria.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="folderModal" tabindex="-1" aria-labelledby="folderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header text-white" style="background-color: #a275bd;">
+        <h5 class="modal-title fw-bold" id="folderModalLabel">
+          <i class="fas fa-folder-open me-2"></i>Patient Electronic Health Folder
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4" *ngIf="selectedPatient">
+        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+          <h6 class="fw-bold text-secondary m-0">{{ selectedPatient.name }}</h6>
+          <span class="badge bg-danger px-2">{{ selectedPatient.bloodGroup }}</span>
+        </div>
+        <div class="mb-3">
+          <small class="text-muted d-block uppercase fw-bold font-monospace">Patient Reference ID</small>
+          <span class="text-dark fw-medium">{{ selectedPatient.id }}</span>
+        </div>
+        <div class="mb-3">
+          <small class="text-muted d-block uppercase fw-bold font-monospace">Last Appointment Checkin Date</small>
+          <span class="text-dark fw-medium">{{ selectedPatient.lastVisit }}</span>
+        </div>
+        <div class="mb-3">
+          <small class="text-muted d-block uppercase fw-bold font-monospace">Primary Diagnosed Condition</small>
+          <span class="badge bg-purple-subtle text-purple px-2 py-1 rounded fw-semibold mt-1">{{ selectedPatient.diagnosis }}</span>
+        </div>
+        <hr class="text-muted opacity-25">
+        <div>
+          <small class="text-muted d-block uppercase fw-bold font-monospace mb-1">Clinical Assessment & Progress Notes</small>
+          <p class="text-secondary small bg-light p-3 rounded border-start border-3 border-purple text-start" style="line-height: 1.6;">
+            {{ selectedPatient.details }}
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer bg-light border-0">
+        <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-dismiss="modal">Close File</button>
+      </div>
+    </div>
+  </div>
+</div>

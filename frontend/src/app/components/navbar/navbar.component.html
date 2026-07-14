@@ -1,0 +1,17 @@
+<div class="sidebar">
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <ul class="nav-links">
+    <li *ngFor="let item of navItems" 
+        [routerLinkActive]="['active']" 
+        [routerLinkActiveOptions]="item.route === '/admin/dashboard' ? {exact: true} : {exact: false}">
+      
+      <a [routerLink]="item.route">
+        <i [class]="item.icon"></i>
+        <span>{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

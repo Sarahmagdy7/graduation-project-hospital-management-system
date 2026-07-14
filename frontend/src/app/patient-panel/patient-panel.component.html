@@ -1,0 +1,26 @@
+<div class="panel-container">
+  <nav class="sidebar">
+    <h2>Patient Portal</h2>
+    <ul>
+      <li routerLink="/patient-panel/make-appointment" routerLinkActive="active">
+        <i class="fas fa-calendar-plus"></i> Book Appointment
+      </li>
+      <li routerLink="/patient-panel/profile" routerLinkActive="active">
+        <i class="fas fa-user"></i> My Profile
+      </li>
+      <li routerLink="/patient-panel/prescriptions" routerLinkActive="active">
+        <i class="fas fa-prescription-bottle-alt"></i> Prescriptions
+      </li>
+      <li routerLink="/patient-panel/lab-results" routerLinkActive="active">
+        <i class="fas fa-flask"></i> Lab Results
+      </li>
+      <li routerLink="/patient-panel/medical-history" routerLinkActive="active">
+        <i class="fas fa-history"></i> Medical History
+      </li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

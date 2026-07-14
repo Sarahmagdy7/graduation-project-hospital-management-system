@@ -1,0 +1,78 @@
+// المتغيرات لسهولة التحكم
+$sidebar-width: 260px;
+$bg-gradient: linear-gradient(180deg, #8e8db3 0%, #5854d9 100%);
+$active-white: rgba(255, 255, 255, 0.25);
+
+.sidebar {
+  width: $sidebar-width;
+  height: 100vh;
+  background: $bg-gradient;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+
+  .menu-toggle {
+    padding: 25px;
+    font-size: 26px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    
+    i {
+      transition: opacity 0.3s;
+      &:hover { opacity: 0.8; }
+    }
+  }
+
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      width: 100%;
+      margin-bottom: 4px;
+      transition: background 0.3s ease;
+
+      a {
+        display: flex;
+        align-items: center;
+        padding: 14px 25px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        
+        i {
+          margin-right: 15px;
+          width: 25px;
+          font-size: 18px;
+          text-align: center;
+        }
+
+        span {
+          letter-spacing: 0.3px;
+        }
+      }
+
+      // تنسيق الحالة النشطة (Active State)
+      &.active {
+        background-color: $active-white;
+        border-left: 5px solid #ffffff;
+        
+        a {
+          font-weight: 600;
+        }
+      }
+
+      // تأثير التمرير
+      &:hover:not(.active) {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}

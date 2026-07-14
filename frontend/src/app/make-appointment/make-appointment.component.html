@@ -1,0 +1,32 @@
+<div class="appointment-container">
+  <h2>Book a New Appointment</h2>
+  <p>Please fill out the form below to request an appointment with our specialists.</p>
+  
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="appointment-form">
+    
+    <div class="form-group">
+      <label for="department">Select Department</label>
+      <select id="department" formControlName="department" class="form-control">
+        <option value="" disabled selected>Choose a department...</option>
+        <option value="cardiology">Cardiology</option>
+        <option value="neurology">Neurology</option>
+        <option value="pediatrics">Pediatrics</option>
+        <option value="dentistry">Dentistry</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" formControlName="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="reason">Reason for Visit</label>
+      <textarea id="reason" formControlName="reason" rows="4" placeholder="Briefly describe your symptoms..."></textarea>
+    </div>
+
+    <button type="submit" [disabled]="appointmentForm.invalid" class="submit-btn">
+      Confirm Booking
+    </button>
+  </form>
+</div>

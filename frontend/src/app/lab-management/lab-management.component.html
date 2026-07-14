@@ -1,0 +1,118 @@
+<div class="container-fluid py-3">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="m-0 fw-bold text-secondary"><i class="fas fa-vials me-2"></i>Laboratory & Tests Management</h4>
+    <button class="btn btn-purple shadow-sm text-white" data-bs-toggle="modal" data-bs-target="#labTestModal" (click)="openAddModal()" style="background-color: #a275bd;">
+      <i class="fas fa-plus me-2"></i>New Lab Test
+    </button>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-3">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-center">
+          <thead class="table-light text-muted small text-uppercase">
+            <tr>
+              <th class="py-3">Test ID</th>
+              <th class="py-3">Patient Name</th>
+              <th class="py-3">Test Type</th>
+              <th class="py-3">Requested By</th>
+              <th class="py-3">Date</th>
+              <th class="py-3">Status</th>
+              <th class="py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let test of labTestsList">
+              <td class="fw-bold text-secondary">{{ test.code }}</td>
+              <td class="fw-semibold">{{ test.patientName }}</td>
+              <td>{{ test.testType }}</td>
+              <td>{{ test.requestedBy }}</td>
+              <td>{{ test.date }}</td>
+              <td>
+                <span class="badge px-2 py-1" 
+                      [ngClass]="{
+                        'bg-success-subtle text-success': test.status === 'Completed',
+                        'bg-warning-subtle text-warning': test.status === 'Pending Sample',
+                        'bg-danger-subtle text-danger': test.status === 'In Progress'
+                      }">
+                  {{ test.status }}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#labTestModal" (click)="openEditModal(test)">
+                  <i class="fas fa-edit"></i> Edit
+                </button>
+                <button class="btn btn-sm btn-outline-danger" (click)="deleteLabTest(test.id)">
+                  <i class="fas fa-trash-alt"></i> Delete
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="labTestsList.length === 0">
+              <td colspan="7" class="text-muted py-4 fw-medium">No laboratory test orders found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="labTestModal" tabindex="-1" aria-labelledby="labTestModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header text-white" style="background-color: #a275bd;">
+        <h5 class="modal-title fw-bold" id="labTestModalLabel">
+          <i class="fas fa-vials me-2"></i>{{ isEditMode ? 'Edit Lab Test Order' : 'Create New Lab Test' }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id="closeModalBtn"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form (ngSubmit)="saveLabTest()">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold text-secondary">Test ID Code</label>
+              <input type="text" class="form-control" [(ngModel)]="newTest.code" name="code" required placeholder="e.g. LAB-1234">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold text-secondary">Patient Name</label>
+              <input type="text" class="form-control" [(ngModel)]="newTest.patientName" name="patientName" required placeholder="Enter full name">
+            </div>
+            <div class="col-md-12">
+              <label class="form-label fw-semibold text-secondary">Test Type</label>
+              <select class="form-select" [(ngModel)]="newTest.testType" name="testType">
+                <option value="Complete Blood Count (CBC)">Complete Blood Count (CBC)</option>
+                <option value="Liver Function Test (LFT)">Liver Function Test (LFT)</option>
+                <option value="PCR Test">PCR Test</option>
+                <option value="Kidney Function Test (KFT)">Kidney Function Test (KFT)</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold text-secondary">Requested By Doctor</label>
+              <input type="text" class="form-control" [(ngModel)]="newTest.requestedBy" name="requestedBy" required placeholder="Dr. Full Name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold text-secondary">Order Date</label>
+              <input type="date" class="form-control" [(ngModel)]="newTest.date" name="date" required>
+            </div>
+            <div class="col-md-12" *ngIf="isEditMode">
+              <label class="form-label fw-semibold text-secondary">Order Tracking Status</label>
+              <select class="form-select" [(ngModel)]="newTest.status" name="status">
+                <option value="Pending Sample">Pending Sample</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-end mt-4">
+            <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn text-white px-4" style="background-color: #a275bd;">
+              {{ isEditMode ? 'Update Record' : 'Save Order' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

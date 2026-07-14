@@ -1,0 +1,71 @@
+// Color Palette Variables
+$purple-primary: #a275bd;
+$purple-hover: #8e5fa7;
+$purple-light: rgba(162, 117, 189, 0.1);
+$text-muted: #6c757d;
+$border-color: #f1f1f1;
+
+// Custom Button Styles
+.btn-purple {
+  background-color: $purple-primary;
+  border-color: $purple-primary;
+  transition: all 0.3s ease;
+
+  &:hover, &:focus {
+    background-color: $purple-hover;
+    border-color: $purple-hover;
+    box-shadow: 0 4px 12px rgba(162, 117, 189, 0.25);
+  }
+}
+
+// Table Text Color Customization
+.text-purple {
+  color: $purple-primary !important;
+}
+
+// Table Styles and Interactivity
+.table {
+  th {
+    letter-spacing: 0.5px;
+    font-size: 0.75rem;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid $border-color;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.015);
+    }
+  }
+}
+
+// Badge Custom Layouts
+.bg-purple-subtle {
+  background-color: $purple-light;
+  color: $purple-primary;
+}
+
+// Form Control Focus Effects inside Modals
+.modal-body {
+  .form-control, .form-select {
+    border-color: #e0e0e0;
+    padding: 0.6rem 0.75rem;
+    
+    &:focus {
+      border-color: $purple-primary;
+      box-shadow: 0 0 0 0.25rem rgba(162, 117, 189, 0.15);
+    }
+  }
+  
+  .form-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+// Close Button Tweaks for Modal Header
+.btn-close-white {
+  filter: invert(1) grayscale(1) brightness(2);
+}

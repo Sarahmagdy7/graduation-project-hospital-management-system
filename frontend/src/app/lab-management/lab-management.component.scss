@@ -1,0 +1,41 @@
+$purple-main: #a275bd;
+$purple-hover: #8e5ca9;
+
+.btn-purple {
+  background-color: $purple-main;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  border: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background-color: $purple-hover;
+    color: white;
+  }
+}
+
+.btn-outline-purple {
+  border-color: $purple-main;
+  color: $purple-main;
+  &:hover {
+    background-color: $purple-main;
+    color: white;
+  }
+}
+
+.table {
+  th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 15px 10px;
+    color: #495057;
+  }
+}
+
+.btn-outline-primary {
+  border-color: #dee2e6;
+}

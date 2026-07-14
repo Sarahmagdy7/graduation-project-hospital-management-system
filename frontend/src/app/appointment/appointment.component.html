@@ -1,0 +1,127 @@
+<div class="appointment-container">
+  
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets/img/logo.jpg" alt="MediLab Logo">
+      MediLab Hospital
+    </div>
+    <ul class="nav-links">
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/appointment" routerLinkActive="active">Appointment</a></li>
+      <li><a routerLink="/departments" routerLinkActive="active">Departments</a></li>
+      <li><a routerLink="/about-us" routerLinkActive="active">About Us</a></li>
+      <li><a routerLink="/contact-us" routerLinkActive="active">Contact Us</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <button class="btn-signin" routerLink="/login">Sign In</button>
+      <button class="btn-register" routerLink="/signup">Register</button>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="hero-content">
+      <h1>We help people to get appointment in online</h1>
+      <p>Lorem MediLab is a full-service digital healthcare platform. We offer advanced solutions that deliver the right type of medical care to you in the most efficient strategies possible.</p>
+    </div>
+    <div class="hero-image">
+      <img src="assets/img/appointment-hero.jpg" alt="Online Booking 3D Rendering">
+    </div>
+  </header>
+
+  <section class="form-section">
+    <h2 class="form-title">Appointment</h2>
+    
+    <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="modern-grid-form">
+      
+      <div class="input-group">
+        <input type="text" formControlName="firstName" placeholder="First Name" [class.error-border]="isInvalid('firstName')">
+      </div>
+      <div class="input-group">
+        <input type="text" formControlName="lastName" placeholder="Last Name" [class.error-border]="isInvalid('lastName')">
+      </div>
+
+      <div class="input-group">
+        <input type="email" formControlName="email" placeholder="Email" [class.error-border]="isInvalid('email')">
+      </div>
+      <div class="input-group">
+        <input type="tel" formControlName="mobileNumber" placeholder="Mobile Number" [class.error-border]="isInvalid('mobileNumber')">
+      </div>
+
+      <div class="input-group">
+        <input type="text" formControlName="nic" placeholder="NIC" [class.error-border]="isInvalid('nic')">
+      </div>
+      <div class="input-group">
+        <input type="date" formControlName="dob" placeholder="Date of Birth" [class.error-border]="isInvalid('dob')">
+      </div>
+
+      <div class="input-group">
+        <select formControlName="gender" [class.error-border]="isInvalid('gender')">
+          <option value="" disabled selected>Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <input type="date" formControlName="appointmentDate" placeholder="Appointment Date" [class.error-border]="isInvalid('appointmentDate')">
+      </div>
+      <div class="input-group">
+        <input type="time" formControlName="appointmentTime" placeholder="Appointment Time" [class.error-border]="isInvalid('appointmentTime')">
+      </div>
+
+      <div class="input-group">
+        <select formControlName="departmentName" [class.error-border]="isInvalid('departmentName')">
+          <option value="" disabled selected>Department Name</option>
+          <option value="neurosciences">Neurosciences</option>
+          <option value="cardiology">Cardiology</option>
+          <option value="pediatrics">Pediatrics</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <input type="text" formControlName="doctorName" placeholder="Doctor Name" [class.error-border]="isInvalid('doctorName')">
+      </div>
+
+      <div class="input-group full-width">
+        <textarea formControlName="address" placeholder="Address" rows="4" [class.error-border]="isInvalid('address')"></textarea>
+      </div>
+
+      <div class="form-submit-container">
+        <button type="submit" class="btn-submit">Register</button>
+      </div>
+
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="logo">
+      <img src="assets/img/logo.jpg" alt="MediLab Logo">
+      MediLab Hospital
+    </div>
+      <div class="footer-col links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/appointment">Appointment</a></li>
+          <li><a routerLink="/departments" >Departments</a></li>
+          <li><a routerLink="/about-us" fragment="about-us">About Us</a></li>
+          <li><a routerLink="/contact-us" fragment="contact-us">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col hours">
+        <h4>Hours</h4>
+        <p>Monday: <span>9:00 - 18:00</span></p>
+        <p>Tuesday: <span>9:00 - 18:00</span></p>
+        <p>Wednesday: <span>9:00 - 18:00</span></p>
+        <p>Thursday: <span>9:00 - 18:00</span></p>
+        <p>Friday: <span>9:00 - 18:00</span></p>
+      </div>
+      <div class="footer-col contact-info">
+        <h4>Contact</h4>
+        <a href="tel:01280195741" class="footer-link"><i class="fas fa-phone"></i> 01280195741</a>
+        <a href="mailto:yu6677800@gmail.com" class="footer-link"><i class="fas fa-envelope"></i> yu6677800@gmail.com</a>
+        <p><i class="fas fa-map-marker-alt"></i> Kalutara South</p>
+      </div>
+    </div>
+  </footer>
+
+</div>

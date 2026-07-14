@@ -1,0 +1,49 @@
+$primary-purple: #a275bd;       
+$dark-purple: #8e5ca9;          
+$bg-light-gray: #f8f9fa;
+
+.doctor-layout {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  .sidebar {
+    background-color: $primary-purple;
+    min-height: 100vh;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+
+    .nav-link {
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+
+      i { width: 25px; font-size: 18px; }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        transform: translateX(5px);
+      }
+    }
+
+    .active-link {
+      background-color: rgba(255, 255, 255, 0.25) !important;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .main-content {
+    min-height: 100vh;
+    background-color: $bg-light-gray;
+    padding-bottom: 40px;
+  }
+
+  .fade-in-content { animation: fadeIn 0.4s ease-in-out; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

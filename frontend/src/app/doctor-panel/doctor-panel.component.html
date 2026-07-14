@@ -1,0 +1,43 @@
+<div class="container-fluid doctor-layout">
+  <div class="row">
+    
+    <nav class="col-md-3 col-lg-2 d-md-block sidebar p-0 text-white">
+      <div class="sidebar-header p-3 text-center border-bottom border-secondary">
+        <h3 class="m-0 fw-bold"><i class="fas fa-user-md me-2"></i>MediLab</h3>
+        <small class="text-white-50">Doctor Portal</small>
+      </div>
+      
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column px-2 gap-1">
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="appointments" routerLinkActive="active-link">
+              <i class="fas fa-calendar-check me-2"></i> My Appointments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="patients-records" routerLinkActive="active-link">
+              <i class="fas fa-notes-medical me-2"></i> Patients Records
+            </a>
+          </li>
+          <li class="nav-item mt-4 border-top border-secondary pt-2">
+            <a class="nav-link text-warning" routerLink="/login">
+              <i class="fas fa-sign-out-alt me-2"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light main-content">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2 text-secondary fw-semibold">Doctor Dashboard</h1>
+        <div class="text-muted fw-medium">Welcome, Dr. Sarah! 👋</div>
+      </div>
+      
+      <div class="fade-in-content">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
+  </div>
+</div>

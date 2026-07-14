@@ -1,0 +1,41 @@
+$purple-main: #a275bd;
+
+// ألوان مخصصة لخلفيات الأيقونات الطبية
+.bg-purple-light { background-color: #ede7f6; }
+.text-purple { color: #5e35b1; }
+
+.bg-blue-light { background-color: #e3f2fd; }
+.text-blue { color: #1e88e5; }
+
+.bg-orange-light { background-color: #fff3e0; }
+.text-orange { color: #ff8f00; }
+
+.bg-red-light { background-color: #ffebee; }
+.text-red { color: #c62828; }
+
+.stat-card {
+  transition: all 0.25s ease-in-out;
+  border-radius: 12px;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+  }
+}
+
+.btn-purple-outline {
+  color: $purple-main;
+  border: 1px solid $purple-main;
+  background: transparent;
+  transition: all 0.2s;
+  
+  &:hover {
+    background-color: $purple-main;
+    color: white;
+  }
+}
+
+.bg-purple-subtle {
+  background-color: rgba($purple-main, 0.1);
+  color: $purple-main;
+}

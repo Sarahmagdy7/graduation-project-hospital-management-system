@@ -1,0 +1,17 @@
+<div class="lab-container">
+  <h2>My Lab Results</h2>
+  
+  <div class="lab-cards">
+    <!-- نستخدم *ngFor لتكرار النتائج ديناميكياً -->
+    <div class="lab-card" *ngFor="let result of labResults">
+      <div class="lab-info">
+        <h3>{{ result.testName }}</h3>
+        <p><strong>Date:</strong> {{ result.date }}</p>
+        <p><strong>Status:</strong> <span class="status" [class.normal]="result.status === 'Normal'">{{ result.status }}</span></p>
+      </div>
+      <div class="lab-actions">
+        <button class="download-btn" (click)="downloadReport(result.id)">Download PDF</button>
+      </div>
+    </div>
+  </div>
+</div>

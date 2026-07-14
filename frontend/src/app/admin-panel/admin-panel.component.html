@@ -1,0 +1,66 @@
+<div class="container-fluid admin-layout">
+  <div class="row">
+    
+    <nav class="col-md-3 col-lg-2 d-md-block sidebar p-0 text-white">
+      <div class="sidebar-header p-3 text-center border-bottom border-secondary">
+        <h3 class="m-0 fw-bold"><i class="fas fa-clinic-medical me-2"></i>MediLab</h3>
+        <small class="text-white-50">Admin Portal</small>
+      </div>
+      
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column px-2 gap-1">
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="dashboard" routerLinkActive="active-link">
+              <i class="fas fa-chart-pie me-2"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="doctors" routerLinkActive="active-link">
+              <i class="fas fa-user-md me-2"></i> Doctors Management
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="departments" routerLinkActive="active-link">
+              <i class="fas fa-hospital me-2"></i> Departments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="pharmacy" routerLinkActive="active-link">
+              <i class="fas fa-pills me-2"></i> Pharmacy (Medicines)
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="lab" routerLinkActive="active-link">
+              <i class="fas fa-flask me-2"></i> Lab Management
+            </a>
+          </li>
+          <li class="nav-item mt-4 border-top border-secondary pt-2">
+            <a class="nav-link text-warning" routerLink="/login">
+              <i class="fas fa-sign-out-alt me-2"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light main-content">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2 text-secondary fw-semibold">Admin Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <i class="fas fa-user-circle me-1"></i> Admin Profile
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="fade-in-content">
+        <div class="content-area">
+  <router-outlet></router-outlet>
+</div>
+      </div>
+    </main>
+
+  </div>
+</div>

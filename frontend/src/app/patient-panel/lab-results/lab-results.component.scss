@@ -1,0 +1,28 @@
+.lab-container {
+  padding: 20px;
+
+  .lab-card {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    .status {
+      font-weight: bold;
+      &.normal { color: green; }
+    }
+
+    .download-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+<div class="login-wrapper">
+  <div class="login-box">
+    
+    <div class="login-header">
+      <h2>Smart Hospital</h2>
+      <p>Please select your role and sign in to your account</p>
+    </div>
+
+    <div class="role-tabs">
+      <button type="button" [class.active]="selectedRole === 'patient'" (click)="selectRole('patient')">
+        <i class="fas fa-user"></i> Patient
+      </button>
+      <button type="button" [class.active]="selectedRole === 'doctor'" (click)="selectRole('doctor')">
+        <i class="fas fa-user-md"></i> Doctor
+      </button>
+      <button type="button" [class.active]="selectedRole === 'admin'" (click)="selectRole('admin')">
+        <i class="fas fa-user-shield"></i> Admin
+      </button>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="modern-form">
+      
+      <div class="input-group">
+        <label>Email Address</label>
+        <input 
+          type="email" 
+          formControlName="email" 
+          placeholder="Enter your email"
+          [class.error-border]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+        />
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <div class="password-container">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            formControlName="password" 
+            placeholder="******"
+            [class.error-border]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+          />
+          <button type="button" class="eye-btn" (click)="togglePasswordVisibility()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+      </div>
+
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="rememberMe" />
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot-link">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Sign In as {{ selectedRole | titlecase }}
+      </button>
+
+      <p class="signup-text">
+        Don't have an account? <a routerLink="/signup">Register as Patient</a>
+      </p>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
